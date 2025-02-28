@@ -5,6 +5,11 @@ Created on Wed Feb 26 19:34:26 2025
 
 @author: cmalili
 """
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
 #part a
 
 '''
@@ -16,7 +21,23 @@ Write a code to reproduce Figure 4, amplifying a
 got the signal (cite the source), and 
 explain which set of frequencies you chose to amplify and why (i.e. their physiological relevance). (10 points)
 '''
+x = np.linspace(0, 4*np.pi, 100)
+I = np.cos(x)
+alphas = [0.2, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+colors = ['blue', 'skyblue', 'cyan', 'lightgreen', 'yellow', 'orange', 'red']
+I_true = np.cos(x - (1 + alphas[3])*np.pi/8)
 
+plt.plot(x, I, color='black')
+plt.plot(x, I_true, color=colors[3])
+plt.grid(visible=True)
+plt.show()
+
+I_tf = np.cos(x) + (1 + alphas[3])*np.pi/8*np.sin(x)
+
+plt.plot(x, I, color='black')
+plt.plot(x, I_tf, color=colors[3])
+plt.grid(visible=True)
+plt.show()
 
 
 #Part b
