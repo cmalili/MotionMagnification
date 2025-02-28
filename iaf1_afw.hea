@@ -1,0 +1,13 @@
+iaf1_afw 8 1000 154500
+iaf1_afw.dat 16 3277 14 0 -578 -3020 0 II
+iaf1_afw.dat 16 3277 14 0 150 28612 0 V1
+iaf1_afw.dat 16 3277 14 0 -355 -27642 0 aVF
+iaf1_afw.dat 16 3277 14 0 -101 -12342 0 CS12
+iaf1_afw.dat 16 3277 14 0 213 -15468 0 CS34
+iaf1_afw.dat 16 3277 14 0 189 -27328 0 CS56
+iaf1_afw.dat 16 3277 14 0 -207 29875 0 CS78
+iaf1_afw.dat 16 3277 14 0 -274 3520 0 CS90
+# <age>: 81 <sex>: F <diagnosis>: Atrial Fibrillation
+# <medications>: Atenolol, Monopril
+# Adenosine injected at 70 sec
+# Note: signals are uncalibrated
