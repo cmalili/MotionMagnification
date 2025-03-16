@@ -23,27 +23,87 @@ Write a code to reproduce Figure 4, amplifying a
 got the signal (cite the source), and 
 explain which set of frequencies you chose to amplify and why (i.e. their physiological relevance). (10 points)
 '''
-'''
+
 # Reproducing figure 4 in the paper mentioned above
+# True motion magnification with lambda 2 pi
+lam = np.pi
 x = np.linspace(0, 4*np.pi, 100)
 I = np.cos(x)
 alphas = [0.2, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
 colors = ['blue', 'skyblue', 'cyan', 'lightgreen', 'yellow', 'orange', 'red']
 I_true = np.cos(x - (1 + alphas[3])*np.pi/8)
 
-plt.plot(x, I, color='black')
-plt.plot(x, I_true, color=colors[3])
+
+for alpha, color in zip(alphas, colors):
+    I_true = np.cos(x - (1 + alpha)*np.pi/8)
+    plt.plot(x, I_true, color=color, label=alpha)
+    
+plt.plot(x, I, color='black',)
+plt.title("True Motion Magnification")
 plt.grid(visible=True)
+plt.xlabel("x (space)")
+plt.ylabel("Intensity")
+plt.legend()
+plt.show()
+
+
+# True motion magnification with lambda pi
+x = np.linspace(0, 4*np.pi, 100)
+I = np.cos(2*x)
+alphas = [0.2, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+colors = ['blue', 'skyblue', 'cyan', 'lightgreen', 'yellow', 'orange', 'red']
+I_true = np.cos(x - (1 + alphas[3])*np.pi/8)
+
+
+for alpha, color in zip(alphas, colors):
+    I_true = np.cos(2*x - (1 + alpha)*np.pi/8)
+    plt.plot(x, I_true, color=color, label=alpha)
+    
+plt.plot(x, I, color='black',)
+plt.title("True Motion Magnification")
+plt.grid(visible=True)
+plt.xlabel("x (space)")
+plt.ylabel("Intensity")
+plt.legend()
 plt.show()
 
 # using approximation
-I_tf = np.cos(x) + (1 + alphas[3])*np.pi/8*np.sin(x)
+# approximation magnification with lambda 2pi
+I = np.cos(x)
+for alpha, color in zip(alphas, colors):
+    I_tf = np.cos(x) + (1 + alpha)*np.pi/8*np.sin(x)
+    plt.plot(x, I_tf, color=color, label=alpha)
 
 plt.plot(x, I, color='black')
-plt.plot(x, I_tf, color=colors[3])
+plt.title("Approximate Motion Magnification")
 plt.grid(visible=True)
+plt.xlabel("x (space)")
+plt.ylabel("Intensity")
+plt.legend()
 plt.show()
-'''
+
+
+I = np.cos(2*x)
+for alpha, color in zip(alphas, colors):
+    I_tf = np.cos(2*x) + (1 + alpha)*np.pi/8*np.sin(2*x)
+    plt.plot(x, I_tf, color=color, label=alpha)
+
+plt.plot(x, I, color='black')
+plt.title("Approximate Motion Magnification")
+plt.grid(visible=True)
+plt.xlabel("x (space)")
+plt.ylabel("Intensity")
+plt.legend()
+plt.show()
+
+
+
+
+
+
+
+
+
 
 
 # Example usage
@@ -70,26 +130,16 @@ filtered_signal = signal.filtfilt(b, a, eeg_signal[:,0])
 
 
 
-
-
-plt.plot(eeg_signal[:4000,0])
-plt.plot(filtered_signal[:4000])
+plt.plot(eeg_signal[:4000,0], label="eeg_signal")
+plt.plot(filtered_signal[:4000], label="filtered signal")
+plt.plot(filtered_signal[:4000] + eeg_signal[:4000,0], label="eeg + filtered signal")
+plt.title("eeg signals")
+plt.xlabel("Time (space)")
+plt.ylabel("Amplitude")
+plt.legend()
 plt.show()
 
 
-
-
-#Part b
-'''
-Take a video of your face with very little movement (try to be as still as possible!). Then
-implement a version of Eulerian video magnification to amplify the color in your face due
-to blood pulse. If you are having difficulty with amplifying the color in your face, document
-your challenges (i.e. skin tone, etc) and find an alternative video that you capture to
-magnify. Also, it would be good to try and capture RAW data if possible, using either a
-DSLR camera or download an application to extract it from your cellphone, as that will
-lend you better results. Document your method’s implementation and your results on your
-data.
-'''
 
 
 #GTK
