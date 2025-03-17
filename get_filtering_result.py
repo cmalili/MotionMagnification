@@ -10,7 +10,7 @@ import os
 from motion_magnification_b import amplify_spatial_Gdown_temporal_ideal
 
 # Define parameters
-input_video = "face.mp4"              # Path to your input video
+input_video = "vid2.mp4"              # Path to your input video
 output_directory = "output"           # Directory for the output video
 alpha = 10                            # Amplification factor
 level = 3                             # Level of Gaussian pyramid
