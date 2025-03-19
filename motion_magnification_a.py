@@ -6,7 +6,6 @@ Created on Wed Feb 26 19:34:26 2025
 @author: cmalili
 """
 
-import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import wfdb
@@ -132,14 +131,19 @@ filtered_signal = signal.filtfilt(b, a, eeg_signal[:,0])
 
 plt.plot(eeg_signal[:4000,0], label="eeg_signal")
 plt.plot(filtered_signal[:4000], label="filtered signal")
-plt.plot(filtered_signal[:4000] + eeg_signal[:4000,0], label="eeg + filtered signal")
+#plt.plot(filtered_signal[:4000] + eeg_signal[:4000,0], label="eeg + filtered signal")
 plt.title("eeg signals")
 plt.xlabel("Time (space)")
 plt.ylabel("Amplitude")
 plt.legend()
 plt.show()
 
-
+plt.plot(filtered_signal[:4000] + eeg_signal[:4000,0], label="eeg + filtered signal")
+plt.title("eeg with amplified signals")
+plt.xlabel("Time (space)")
+plt.ylabel("Amplitude")
+plt.legend()
+plt.show()
 
 
 #GTK
